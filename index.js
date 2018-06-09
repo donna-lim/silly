@@ -123,12 +123,12 @@ function sleep(milliseconds) {
     }
 }
 
+*/
 function randomPicker(array) {
     let i = Math.floor(Math.random() * array.length);
     return array[i];
 }
 
-*/
 function scream() {
     var scream = new Audio(randomPicker(app.audio));
     scream.play();
