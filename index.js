@@ -15,7 +15,7 @@ var app = {
     ]
 };
 
-/*
+
 try {
     let sensor = new LinearAccelerationSensor({ frequency: 60 });
     sensor.start();
@@ -41,8 +41,9 @@ catch (e) {
 
 
 if (window.DeviceMotionEvent || 'LinearAccelerationSensor' in window) {
-    // ADD AN EVENT LISTENER TO WINDOW
+    window.addEventListener('devicemotion', deviceMotionHandler, false);
 }
+
 else {
     console.log("Sensors not supported");
 }
@@ -98,7 +99,9 @@ function deviceMotionHandler(eventData) {
     if (!app.busy) {
         if (Math.abs(mAcc.x) > shakyThreshold || Math.abs(mAcc.y) > shakyThreshold || Math.abs(mAcc.z) > shakyThreshold) {
             app.busy = true;
-            //*DO SILLY STUFF
+            var scream = new Audio(randomPicker(app.audio));
+            scream.play();
+            sleep(2000);
 
             app.busy = false;
         }
@@ -123,7 +126,6 @@ function sleep(milliseconds) {
     }
 }
 
-*/
 function randomPicker(array) {
     let i = Math.floor(Math.random() * array.length);
     return array[i];
